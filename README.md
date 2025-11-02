@@ -22,8 +22,8 @@ which can later be extended into a true **cross-domain messaging** setup.
 
 ## Project Overview
 
-The app contains a parent component that embeds two iframes — each running a simple chat UI (`Chat A` and `Chat B`).    
-At this stage, the iframes do **not exchange messages**; the structure simply demonstrates how such an architecture could be set up.
+The app contains a parent component that embeds two iframes — each running a simple chat UI (Chat A and Chat B).
+These iframes exchange messages in real time using the window.postMessage API, allowing cross-frame communication managed by the parent component.
 
 ```plaintext  
 Parent App  
