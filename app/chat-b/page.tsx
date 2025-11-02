@@ -24,7 +24,7 @@ export default function ChatB() {
     const [showEmojiPicker, setShowEmojiPicker] = useState(false)
     const [isOtherTyping, setIsOtherTyping] = useState(false)
     const messagesEndRef = useRef<HTMLDivElement>(null)
-    const typingTimeoutRef = useRef<NodeJS.Timeout>()
+    const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null)
     const channelRef = useRef<BroadcastChannel | null>(null)
 
     useEffect(() => {
