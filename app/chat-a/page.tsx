@@ -25,7 +25,6 @@ export default function ChatA() {
     const [isOtherTyping, setIsOtherTyping] = useState(false)
     const messagesEndRef = useRef<HTMLDivElement>(null)
     const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null)
-    const channelRef = useRef<BroadcastChannel | null>(null)
 
     useEffect(() => {
         const handleMessage = (event: MessageEvent) => {

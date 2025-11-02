@@ -1,4 +1,4 @@
-name: CI/CD - Develop Branch
+name: CI - Develop Checks
 
 on:
   pull_request:
@@ -10,7 +10,9 @@ on:
 
 jobs:
   lint-test-build:
+    name: Lint, Test & Build
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -32,19 +34,3 @@ jobs:
 
       - name: Build app
         run: npm run build
-
-  deploy:
-    needs: lint-test-build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Deploy to Vercel (Staging)
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: .
